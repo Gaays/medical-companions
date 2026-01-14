@@ -6,7 +6,7 @@ export function useMockData() {
     {
       id: 1,
       name: 'Zhang Wei',
-      avatar: 'https://randomuser.me/api/portraits/women/1.jpg',
+      avatar: 'https://ai-public.mastergo.com/ai/img_res/5d34a55337f8270b24cd5a39c8cc8e83.jpg',
       gender: 'female',
       languages: ['english', 'chinese'],
       rating: 4.9,
@@ -14,36 +14,36 @@ export function useMockData() {
       bio: 'Fluent in English and Chinese with 5 years of medical companion experience.',
       region: 'nanshan',
       distance: 2.5,
-      specialties: ['General Medicine', 'Pediatrics'],
-      introduction: 'I am a professional medical companion with extensive experience helping foreigners navigate the Chinese healthcare system. I speak fluent English and Chinese, and I am familiar with major hospitals in Shenzhen.'
+      specialties: ['Pediatric care', 'Vaccination assistance', 'Child-friendly hospitals'],
+      introduction: 'I help families navigate pediatric care in Shenzhen, including vaccination assistance and connecting you with child-friendly hospitals. I speak fluent English and Chinese, and I am familiar with major hospitals in the area.'
     },
     {
       id: 2,
       name: 'Li Ming',
-      avatar: 'https://randomuser.me/api/portraits/men/2.jpg',
+      avatar: 'https://ai-public.mastergo.com/ai/img_res/9060a6b3952e4511297bd2460561679f.jpg',
       gender: 'male',
       languages: ['english', 'chinese', 'japanese'],
       rating: 4.8,
       price: 100,
-      bio: 'Multilingual medical companion specializing in elderly care.',
+      bio: 'Multilingual medical companion specializing in family support and insurance assistance.',
       region: 'futian',
       distance: 3.2,
-      specialties: ['Geriatrics', 'Cardiology'],
-      introduction: 'I have been working as a medical companion for over 8 years, with a focus on elderly care. I can communicate in English, Chinese, and Japanese, and I am knowledgeable about various medical conditions.'
+      specialties: ['Family support', 'Insurance assistance', 'Medication guidance'],
+      introduction: 'I provide comprehensive family support, including insurance assistance and medication guidance. I can communicate in English, Chinese, and Japanese, and I am knowledgeable about healthcare services in Shenzhen.'
     },
     {
       id: 3,
       name: 'Wang Fang',
-      avatar: 'https://randomuser.me/api/portraits/women/3.jpg',
+      avatar: 'https://ai-public.mastergo.com/ai/img_res/dcf3e9ff34c7eb28a3a85370c9bd2af9.jpg',
       gender: 'female',
       languages: ['english', 'chinese', 'spanish'],
       rating: 4.7,
       price: 90,
-      bio: 'Friendly and patient, with experience in pediatric care.',
+      bio: 'Friendly and patient, with experience in pediatric care and family support.',
       region: 'luohu',
       distance: 4.1,
-      specialties: ['Pediatrics', 'Dermatology'],
-      introduction: 'I love working with children and have extensive experience in pediatric care. I can communicate in English, Chinese, and Spanish, and I am familiar with the pediatric departments of major hospitals in Shenzhen.'
+      specialties: ['Pediatric care', 'Family support', 'Child-friendly hospitals'],
+      introduction: 'I love working with children and families, providing support for pediatric care and connecting you with child-friendly hospitals. I can communicate in English, Chinese, and Spanish.'
     },
     {
       id: 4,
@@ -53,11 +53,11 @@ export function useMockData() {
       languages: ['english', 'chinese', 'french'],
       rating: 4.9,
       price: 130,
-      bio: 'Medical professional with clinical background.',
+      bio: 'Reliable companion with experience in emergency support and follow-up care.',
       region: 'baoan',
       distance: 5.3,
-      specialties: ['Internal Medicine', 'Orthopedics'],
-      introduction: 'I am a former nurse with clinical experience, which gives me a deeper understanding of medical procedures and patient care. I can communicate in English, Chinese, and French.'
+      specialties: ['24/7 emergency support', 'Follow-up care', 'Medication guidance'],
+      introduction: 'I provide reliable support for emergency situations and follow-up care. I can communicate in English, Chinese, and French, and I am familiar with hospital procedures in Shenzhen.'
     },
     {
       id: 5,
@@ -67,11 +67,11 @@ export function useMockData() {
       languages: ['english', 'chinese', 'german'],
       rating: 4.6,
       price: 85,
-      bio: 'Caring and attentive, with experience in mental health support.',
+      bio: 'Caring and attentive, with experience in medication guidance and follow-up care.',
       region: 'longgang',
       distance: 6.7,
-      specialties: ['Mental Health', 'Psychology'],
-      introduction: 'I specialize in providing support for patients with mental health concerns. I can communicate in English, Chinese, and German, and I am trained in basic counseling techniques.'
+      specialties: ['Medication guidance', 'Follow-up care', 'Family support'],
+      introduction: 'I specialize in providing medication guidance and follow-up care support. I can communicate in English, Chinese, and German, and I am dedicated to ensuring your comfort during medical visits.'
     },
     {
       id: 6,
@@ -81,11 +81,11 @@ export function useMockData() {
       languages: ['english', 'chinese', 'korean'],
       rating: 4.7,
       price: 95,
-      bio: 'Energetic and reliable, with experience in emergency situations.',
+      bio: 'Energetic and reliable, with experience in emergency support and insurance assistance.',
       region: 'longhua',
       distance: 7.2,
-      specialties: ['Emergency Care', 'General Surgery'],
-      introduction: 'I have experience working in emergency departments and can handle urgent situations calmly. I can communicate in English, Chinese, and Korean, and I am familiar with emergency procedures.'
+      specialties: ['24/7 emergency support', 'Insurance assistance', 'Follow-up care'],
+      introduction: 'I provide energetic and reliable support for emergency situations and insurance assistance. I can communicate in English, Chinese, and Korean, and I am familiar with emergency procedures.'
     },
     {
       id: 7,
@@ -95,11 +95,11 @@ export function useMockData() {
       languages: ['english', 'chinese'],
       rating: 4.8,
       price: 110,
-      bio: 'Detail-oriented with experience in chronic disease management.',
-      region: '光明',
+      bio: 'Detail-oriented with experience in follow-up care and medication guidance.',
+      region: 'guangming',
       distance: 8.5,
-      specialties: ['Chronic Diseases', 'Endocrinology'],
-      introduction: 'I specialize in helping patients with chronic diseases manage their conditions. I can communicate in English and Chinese, and I am knowledgeable about various treatment options.'
+      specialties: ['Follow-up care', 'Medication guidance', 'Family support'],
+      introduction: 'I provide detail-oriented support for follow-up care and medication guidance. I can communicate in English and Chinese, and I am dedicated to helping you manage your healthcare needs.'
     },
     {
       id: 8,
@@ -109,11 +109,11 @@ export function useMockData() {
       languages: ['english', 'chinese', 'japanese'],
       rating: 4.6,
       price: 90,
-      bio: 'Patient and compassionate, with experience in rehabilitation support.',
+      bio: 'Patient and compassionate, with experience in family support and vaccination assistance.',
       region: 'pingshan',
       distance: 9.8,
-      specialties: ['Rehabilitation', 'Physical Therapy'],
-      introduction: 'I have experience helping patients with rehabilitation after injuries or surgeries. I can communicate in English, Chinese, and Japanese, and I am trained in basic physical therapy techniques.'
+      specialties: ['Family support', 'Vaccination assistance', 'Child-friendly hospitals'],
+      introduction: 'I provide patient and compassionate support for families, including vaccination assistance and connecting you with child-friendly healthcare facilities. I can communicate in English, Chinese, and Japanese.'
     },
     {
       id: 9,
@@ -123,11 +123,11 @@ export function useMockData() {
       languages: ['english', 'chinese', 'spanish'],
       rating: 4.9,
       price: 125,
-      bio: 'Highly rated companion with experience in VIP care.',
+      bio: 'Highly rated companion with experience in pediatric care and medication guidance.',
       region: 'dapeng',
       distance: 10.3,
-      specialties: ['VIP Care', 'Obstetrics'],
-      introduction: 'I provide high-quality VIP care services for patients who require extra attention. I can communicate in English, Chinese, and Spanish, and I am familiar with the VIP services of major hospitals.'
+      specialties: ['Pediatric care', 'Medication guidance', 'Follow-up care'],
+      introduction: 'I provide high-quality support for pediatric care, medication guidance, and follow-up care. I can communicate in English, Chinese, and Spanish, and I am dedicated to ensuring your child\'s comfort.'
     },
     {
       id: 10,
@@ -137,11 +137,11 @@ export function useMockData() {
       languages: ['english', 'chinese', 'french'],
       rating: 4.7,
       price: 105,
-      bio: 'Knowledgeable about traditional Chinese medicine and Western medicine.',
+      bio: 'Knowledgeable companion specializing in insurance assistance and 24/7 emergency support.',
       region: 'yantian',
       distance: 11.2,
-      specialties: ['Traditional Chinese Medicine', 'Acupuncture'],
-      introduction: 'I have knowledge of both traditional Chinese medicine and Western medicine, which allows me to provide comprehensive support to patients. I can communicate in English, Chinese, and French.'
+      specialties: ['Insurance assistance', '24/7 emergency support', 'Family support'],
+      introduction: 'I provide knowledgeable support for insurance assistance and emergency situations. I can communicate in English, Chinese, and French, and I am here to help you navigate any healthcare challenges.'
     }
   ])
 

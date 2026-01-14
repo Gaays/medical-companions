@@ -1,6 +1,7 @@
 import { createApp } from 'vue'
 import './styles/index.scss'
 import App from './App.vue'
+import router from './router/index.js'
 
 // 导入国际化配置
 import { createI18n } from 'vue-i18n'
@@ -29,6 +30,7 @@ const app = createApp(App)
 
 // 使用插件
 app.use(i18n)
+app.use(router)
 
 // 注册 Font Awesome 组件
 app.component('FontAwesomeIcon', FontAwesomeIcon)

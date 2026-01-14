@@ -22,21 +22,21 @@ const formattedLanguages = computed(() => {
     // 根据语言返回对应的国旗和名称
     switch (lang) {
       case "english":
-        return { flag: "🇺🇸", name: t("languages.english") };
+        return { flag: "🇺🇸", name: t("languages.english"), displayName: "English" };
       case "chinese":
-        return { flag: "🇨🇳", name: t("languages.chinese") };
+        return { flag: "🇨🇳", name: t("languages.chinese"), displayName: "Chinese" };
       case "spanish":
-        return { flag: "🇪🇸", name: t("languages.spanish") };
+        return { flag: "🇪🇸", name: t("languages.spanish"), displayName: "Spanish" };
       case "french":
-        return { flag: "🇫🇷", name: t("languages.french") };
+        return { flag: "🇫🇷", name: t("languages.french"), displayName: "French" };
       case "german":
-        return { flag: "🇩🇪", name: t("languages.german") };
+        return { flag: "🇩🇪", name: t("languages.german"), displayName: "German" };
       case "japanese":
-        return { flag: "🇯🇵", name: t("languages.japanese") };
+        return { flag: "🇯🇵", name: t("languages.japanese"), displayName: "Japanese" };
       case "korean":
-        return { flag: "🇰🇷", name: t("languages.korean") };
+        return { flag: "🇰🇷", name: t("languages.korean"), displayName: "Korean" };
       default:
-        return { flag: "🌐", name: lang };
+        return { flag: "🌐", name: lang, displayName: lang };
     }
   });
 });
@@ -46,6 +46,11 @@ const formattedRegion = computed(() => {
   return t(`regions.${props.companion.region}`);
 });
 
+// 计算属性：美元价格（汇率假设为1美元=7人民币）
+const usdPrice = computed(() => {
+  return (props.companion.price / 7).toFixed(2);
+});
+
 // 查看详情方法
 const handleViewDetails = () => {
   emit("view-details", props.companion);
@@ -53,240 +58,66 @@ const handleViewDetails = () => {
 </script>
 
 <template>
-  <el-card class="companion-card">
-    <template #header>
-      <div class="card-header">
-        <img :src="companion.avatar" :alt="companion.name" class="avatar" />
-        <div class="name-rating">
-          <h3>{{ companion.name }}</h3>
-          <div class="rating">
-            <el-rate
-              :value="companion.rating"
-              disabled
-              show-score
-              text-color="#ff9900"
-              score-template="{value}"
-            />
-          </div>
-        </div>
-      </div>
-    </template>
-
-    <div class="card-content">
-      <!-- 语言 -->
-      <div class="info-item">
-        <span class="label">{{ t("companion.languages") }}:</span>
-        <div class="languages">
-          <span
-            v-for="(lang, index) in formattedLanguages"
-            :key="index"
-            class="language-tag"
-          >
-            {{ lang.flag }} {{ lang.name }}
-          </span>
-        </div>
-      </div>
-
-      <!-- 性别和区域 -->
-      <div class="info-item">
-        <div class="gender">
-          <span class="label">{{ t("search.gender") }}:</span>
-          <span class="value">{{ t(`search.${companion.gender}`) }}</span>
-        </div>
-        <div class="region">
-          <span class="label">{{ t("companion.region") }}:</span>
-          <span class="value">{{ formattedRegion }}</span>
-        </div>
-      </div>
-
-      <!-- 价格和距离 -->
-      <div class="info-item">
-        <div class="price">
-          <span class="label">{{ t("companion.price_per_hour") }}:</span>
-          <span class="value price-value">¥{{ companion.price }}</span>
-        </div>
-        <div class="distance">
-          <span class="label">{{ t("sorting.distance") }}:</span>
-          <span class="value">{{ companion.distance }} km</span>
-        </div>
-      </div>
-
-      <!-- 简介 -->
-      <div class="info-item bio">
-        <span class="label">{{ t("companion.bio") }}:</span>
-        <p class="value">{{ companion.bio }}</p>
+  <div 
+    class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition cursor-pointer"
+    @click="handleViewDetails"
+  >
+    <div class="relative">
+      <img
+        :src="companion.avatar"
+        :alt="companion.name"
+        class="w-full h-48 object-cover"
+      />
+      <div
+        class="absolute top-2 right-2 bg-white rounded-full px-2 py-1 flex items-center text-sm"
+      >
+        <font-awesome-icon icon="star" class="text-yellow-400 mr-1" />
+        <span>{{ companion.rating }}</span>
       </div>
     </div>
-
-    <template #footer>
-      <div class="card-footer">
-        <el-button type="primary" size="small" @click="handleViewDetails">
-          {{ t("companion.details") }}
-        </el-button>
+    <div class="p-4">
+      <div class="flex justify-between items-start mb-2">
+        <h4 class="font-bold text-lg">{{ companion.name }}</h4>
+        <div class="text-right">
+          <span class="text-primary font-medium block">¥{{ companion.price }}/h</span>
+          <span class="text-gray-500 text-sm">${{ usdPrice }}/h</span>
+        </div>
       </div>
-    </template>
-  </el-card>
+      <div class="flex flex-wrap gap-2 mb-3">
+        <span
+          v-for="(lang, i) in formattedLanguages"
+          :key="i"
+          class="bg-gray-100 text-gray-700 px-2 py-1 rounded-full text-xs"
+        >
+          {{ lang.flag }} {{ lang.displayName }}
+        </span>
+      </div>
+      <p class="text-gray-600 text-sm mb-4 line-clamp-2">
+        {{ companion.bio }}
+      </p>
+      <div class="flex justify-between items-center">
+        <span class="text-gray-500 text-sm flex items-center">
+          <font-awesome-icon icon="map-marker-alt" class="mr-1" />
+          {{ formattedRegion }}
+        </span>
+        <button
+          class="!rounded-button whitespace-nowrap bg-primary text-white px-4 py-2 text-sm hover:bg-blue-700 transition"
+          @click.stop="handleViewDetails"
+        >
+          {{ t("companion.view_profile") }}
+        </button>
+      </div>
+    </div>
+  </div>
 </template>
 
 <style scoped>
-.companion-card {
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  border-radius: var(--border-radius);
-  overflow: hidden;
+/* 页面特定样式 */
+:deep(.bg-primary) {
+  background-color: var(--primary-color);
 }
 
-.card-header {
-  display: flex;
-  align-items: center;
-  gap: 20px;
-  padding: 0;
-}
-
-.avatar {
-  width: 70px;
-  height: 70px;
-  border-radius: 50%;
-  object-fit: cover;
-  border: 3px solid #f0f7ff;
-  flex-shrink: 0;
-}
-
-.name-rating {
-  flex: 1;
-  min-width: 0;
-}
-
-.name-rating h3 {
-  margin: 0 0 10px 0;
-  font-size: 1.25rem; /* 20px */
-  font-weight: 600;
-  color: var(--text-primary);
-  line-height: 1.3;
-}
-
-.rating {
-  display: flex;
-  align-items: center;
-}
-
-/* 评分组件样式 */
-:deep(.el-rate) {
-  font-size: 0.9rem;
-}
-
-:deep(.el-rate__text) {
-  font-size: 0.9rem;
-  margin-left: 8px;
-}
-
-.card-content {
-  flex: 1;
-  padding: 0;
-  display: flex;
-  flex-direction: column;
-  gap: 18px;
-}
-
-.info-item {
-  margin-bottom: 0;
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-}
-
-.label {
-  font-weight: 500;
-  color: var(--text-secondary);
-  font-size: 0.9rem;
-  margin-right: 0;
-}
-
-.value {
-  color: var(--text-primary);
-  font-size: 0.95rem;
-}
-
-/* 语言标签 */
-.languages {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-  margin-top: 0;
-}
-
-.language-tag {
-  background-color: #f0f7ff;
+:deep(.text-primary) {
   color: var(--primary-color);
-  padding: 6px 12px;
-  border-radius: 18px;
-  font-size: 0.85rem;
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  font-weight: 500;
-}
-
-/* 性别和区域 */
-.info-item:nth-child(2) {
-  flex-direction: row;
-  justify-content: space-between;
-  gap: 16px;
-  margin-bottom: 0;
-}
-
-.gender,
-.region {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  flex: 1;
-}
-
-/* 价格和距离 */
-.info-item:nth-child(3) {
-  flex-direction: row;
-  justify-content: space-between;
-  gap: 16px;
-  margin-bottom: 0;
-}
-
-.price,
-.distance {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  flex: 1;
-}
-
-.price-value {
-  font-weight: 700;
-  color: var(--primary-color);
-  font-size: 1.1rem;
-}
-
-/* 简介 */
-.bio .value {
-  margin-top: 0;
-  line-height: 1.6;
-  color: var(--text-secondary);
-  display: -webkit-box;
-  -webkit-line-clamp: 3;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
-.card-footer {
-  display: flex;
-  justify-content: center;
-  padding: 16px 0 0 0;
-}
-
-/* 按钮样式 */
-:deep(.el-button--primary) {
-  font-size: 0.95rem;
-  padding: 8px 20px;
 }
 </style>

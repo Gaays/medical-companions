@@ -28,8 +28,8 @@ const switchLanguage = (lang) => {
         <h1 class="text-xl font-bold text-gray-800">{{ t('app.name') }}</h1>
       </div>
       <nav class="hidden md:flex space-x-8">
-        <a href="#" class="text-gray-700 hover:text-primary transition">{{ t('header.home') }}</a>
-        <a href="#" class="text-gray-700 hover:text-primary transition">{{ t('header.companions') }}</a>
+        <router-link to="/" class="text-gray-700 hover:text-primary transition">{{ t('header.home') }}</router-link>
+        <router-link to="/companions" class="text-gray-700 hover:text-primary transition">{{ t('header.companions') }}</router-link>
         <a href="#" class="text-gray-700 hover:text-primary transition">{{ t('header.how_it_works') }}</a>
         <a href="#" class="text-gray-700 hover:text-primary transition">{{ t('header.about_us') }}</a>
       </nav>

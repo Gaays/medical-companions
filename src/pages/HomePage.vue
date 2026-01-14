@@ -37,8 +37,6 @@ const closeContactModal = () => {
 
 <template>
   <div class="min-h-screen bg-gray-50">
-    <!-- 头部 -->
-    <Header />
     
     <!-- 英雄区域 -->
     <HeroSection />
@@ -62,8 +60,5 @@ const closeContactModal = () => {
       v-if="showContactModal"
       @close="closeContactModal"
     />
-    
-    <!-- 页脚 -->
-    <Footer />
   </div>
 </template>

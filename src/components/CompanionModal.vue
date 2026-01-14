@@ -1,4 +1,5 @@
 <script setup>
+import { computed } from 'vue';
 import { useI18n } from 'vue-i18n';
 
 // i18n 实例
@@ -10,9 +11,14 @@ const props = defineProps({
     type: Object,
     required: true,
     validator: (value) => {
-      return value && typeof value === 'object' && 'name' in value && 'image' in value;
+      return value && typeof value === 'object' && 'name' in value && 'avatar' in value;
     }
   }
+});
+
+// 计算属性：美元价格（汇率假设为1美元=7人民币）
+const usdPrice = computed(() => {
+  return (props.companion.price / 7).toFixed(2);
 });
 
 // 定义组件事件
@@ -34,7 +40,7 @@ const openContactModal = () => {
     <div class="bg-white rounded-lg max-w-2xl w-full max-h-[90vh] overflow-y-auto">
       <div class="relative">
         <img 
-          :src="companion.image" 
+          :src="companion.avatar" 
           :alt="companion.name"
           class="w-full h-64 object-cover"
         >
@@ -56,11 +62,14 @@ const openContactModal = () => {
               </div>
               <span class="text-gray-500 text-sm">
                 <font-awesome-icon icon="map-marker-alt" class="mr-1" />
-                {{ companion.location }}
+                {{ t(`regions.${companion.region}`) }}
               </span>
             </div>
           </div>
-          <span class="text-primary font-bold text-xl">¥{{ companion.price }}/h</span>
+          <div class="text-right">
+            <span class="text-primary font-bold text-xl block">¥{{ companion.price }}/h</span>
+            <span class="text-gray-500 text-lg">${{ usdPrice }}/h</span>
+          </div>
         </div>
         
         <div class="mb-6">
@@ -71,26 +80,26 @@ const openContactModal = () => {
               :key="i" 
               class="bg-gray-100 text-gray-700 px-3 py-1 rounded-full"
             >
-              {{ lang }}
+              {{ t(`languages.${lang}`) }}
             </span>
           </div>
         </div>
         
         <div class="mb-6">
           <h4 class="font-bold mb-2">{{ t('companion.about_me') }}</h4>
-          <p class="text-gray-700">{{ companion.description }}</p>
+          <p class="text-gray-700">{{ companion.introduction }}</p>
         </div>
         
         <div class="mb-6">
           <h4 class="font-bold mb-2">{{ t('companion.services') }}</h4>
           <ul class="grid grid-cols-1 md:grid-cols-2 gap-2">
             <li 
-              v-for="(service, i) in companion.services" 
+              v-for="(specialty, i) in companion.specialties" 
               :key="i" 
               class="flex items-center"
             >
               <font-awesome-icon icon="check-circle" class="text-green-500 mr-2" />
-              <span>{{ service }}</span>
+              <span>{{ specialty }}</span>
             </li>
           </ul>
         </div>
