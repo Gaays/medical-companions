@@ -34,7 +34,8 @@ function renderMarkdown(text: string): string {
 <template>
   <main v-if="article" class="bg-[#fbfcfb]">
     <article class="container mx-auto max-w-3xl px-4 py-10 md:py-16">
-      <NuxtLink to="/news" class="mb-8 inline-flex font-semibold text-[#0f5f4c]">
+      <NuxtLink to="/news" class="mb-8 inline-flex items-center gap-2 font-semibold text-[#0f5f4c] hover:text-[#0b4336]">
+        <font-awesome-icon icon="arrow-left" class="text-sm" />
         Back to guides
       </NuxtLink>
 
@@ -65,7 +66,10 @@ function renderMarkdown(text: string): string {
 
   <main v-else class="container mx-auto px-4 py-20">
     <h1 class="mb-3 text-3xl font-bold text-[#17342d]">Guide not found</h1>
-    <NuxtLink to="/news" class="font-semibold text-[#0f5f4c]">View all guides</NuxtLink>
+    <NuxtLink to="/news" class="inline-flex items-center gap-2 font-semibold text-[#0f5f4c] hover:text-[#0b4336]">
+      <font-awesome-icon icon="arrow-left" class="text-sm" />
+      View all guides
+    </NuxtLink>
   </main>
 </template>
 

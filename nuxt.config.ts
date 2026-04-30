@@ -24,7 +24,7 @@ export default defineNuxtConfig({
       },
     },
   },
-  css: ['~/styles/index.scss', 'element-plus/dist/index.css'],
+  css: ['@fortawesome/fontawesome-svg-core/styles.css', '~/styles/index.scss', 'element-plus/dist/index.css'],
   runtimeConfig: {
     supabaseUrl: '',
     supabaseServiceRoleKey: '',

@@ -41,6 +41,19 @@
   box-sizing: border-box;
 }
 
+/* Keep Font Awesome SVG icons stable before and after hydration. */
+.svg-inline--fa {
+  display: inline-block;
+  width: 1em;
+  min-width: 1em;
+  max-width: 1em;
+  height: 1em;
+  max-height: 1em;
+  overflow: visible;
+  vertical-align: -0.125em;
+  flex-shrink: 0;
+}
+
 /* 基础元素样式 */
 body {
   margin: 0;

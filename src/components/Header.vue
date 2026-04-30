@@ -3,6 +3,7 @@ import { ref } from 'vue'
 import { useI18n } from 'vue-i18n'
 
 const { t, locale } = useI18n()
+const route = useRoute()
 const showLanguageMenu = ref(false)
 const showMobileMenu = ref(false)
 
@@ -18,6 +19,16 @@ const navItems = [
   { to: '/news', labelKey: 'News' },
   { href: '/#consult', labelKey: 'Consultation' }
 ]
+
+const isActiveNav = (item) => {
+  if (item.href)
+    return route.path === '/' && route.hash === '#consult'
+
+  if (item.to === '/')
+    return route.path === '/'
+
+  return route.path === item.to || route.path.startsWith(`${item.to}/`)
+}
 </script>
 
 <template>
@@ -36,14 +47,16 @@ const navItems = [
           <NuxtLink
             v-if="item.to"
             :to="item.to"
-            class="text-sm font-semibold text-[#4f5f59] no-underline transition hover:text-[#0f5f4c]"
+            class="rounded-md px-2.5 py-2 text-sm font-semibold no-underline transition hover:bg-[#eef7f2] hover:text-[#0f5f4c]"
+            :class="isActiveNav(item) ? 'bg-[#eef7f2] text-[#0f5f4c]' : 'text-[#4f5f59]'"
           >
             {{ item.labelKey.startsWith('header.') ? t(item.labelKey) : item.labelKey }}
           </NuxtLink>
           <a
             v-else
             :href="item.href"
-            class="text-sm font-semibold text-[#4f5f59] no-underline transition hover:text-[#0f5f4c]"
+            class="rounded-md px-2.5 py-2 text-sm font-semibold no-underline transition hover:bg-[#eef7f2] hover:text-[#0f5f4c]"
+            :class="isActiveNav(item) ? 'bg-[#eef7f2] text-[#0f5f4c]' : 'text-[#4f5f59]'"
           >
             {{ item.labelKey }}
           </a>
@@ -81,7 +94,8 @@ const navItems = [
           <NuxtLink
             v-if="item.to"
             :to="item.to"
-            class="rounded-md px-3 py-3 font-semibold text-[#4f5f59] no-underline hover:bg-[#f5f7f4]"
+            class="rounded-md px-3 py-3 font-semibold no-underline hover:bg-[#eef7f2]"
+            :class="isActiveNav(item) ? 'bg-[#eef7f2] text-[#0f5f4c]' : 'text-[#4f5f59]'"
             @click="showMobileMenu = false"
           >
             {{ item.labelKey.startsWith('header.') ? t(item.labelKey) : item.labelKey }}
@@ -89,7 +103,9 @@ const navItems = [
           <a
             v-else
             :href="item.href"
-            class="rounded-md px-3 py-3 font-semibold text-[#4f5f59] no-underline hover:bg-[#f5f7f4]"
+            class="rounded-md px-3 py-3 font-semibold no-underline hover:bg-[#eef7f2]"
+            :class="isActiveNav(item) ? 'bg-[#eef7f2] text-[#0f5f4c]' : 'text-[#4f5f59]'"
+            @click="showMobileMenu = false"
           >
             {{ item.labelKey }}
           </a>
