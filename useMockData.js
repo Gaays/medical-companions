@@ -1,147 +1,126 @@
 import { ref } from 'vue'
 
-// 模拟陪护人员数据
 export function useMockData() {
   const companions = ref([
     {
       id: 1,
-      name: 'Zhang Wei',
-      avatar: 'https://ai-public.mastergo.com/ai/img_res/5d34a55337f8270b24cd5a39c8cc8e83.jpg',
-      gender: 'female',
+      name: 'Visa & Residence Health Check Navigator',
+      avatar: 'https://ai-public.mastergo.com/ai/img_res/cc066b71814bbecac8ee80ac05c5dec2.jpg',
+      gender: 'male',
+      serviceType: 'visa',
       languages: ['english', 'chinese'],
       rating: 4.9,
-      price: 120,
-      bio: 'Fluent in English and Chinese with 5 years of medical companion experience.',
-      region: 'nanshan',
-      distance: 2.5,
-      specialties: ['Pediatric care', 'Vaccination assistance', 'Child-friendly hospitals'],
-      introduction: 'I help families navigate pediatric care in Shenzhen, including vaccination assistance and connecting you with child-friendly hospitals. I speak fluent English and Chinese, and I am familiar with major hospitals in the area.'
+      price: 299,
+      bio: 'For work visa applicants, foreign teachers, and students who need to know whether an official health certificate is required.',
+      region: 'guangzhou',
+      distance: 1,
+      specialties: [
+        'Official center vs private checkup explanation',
+        'Document and appointment checklist',
+        'Overseas report risk review',
+        'Employer or school question template'
+      ],
+      introduction: 'Use this plan before paying for a medical exam. We help you separate an official China visa or residence health certificate from a private annual checkup, then prepare the likely documents, timing, and questions to confirm with your employer, school, or local authority.'
     },
     {
       id: 2,
-      name: 'Li Ming',
-      avatar: 'https://ai-public.mastergo.com/ai/img_res/9060a6b3952e4511297bd2460561679f.jpg',
+      name: 'Shanghai New Arrival Health Check Plan',
+      avatar: 'https://ai-public.mastergo.com/ai/img_res/339f341e962c49c84dd7d9238ad3c8f3.jpg',
       gender: 'male',
+      serviceType: 'visa',
       languages: ['english', 'chinese', 'japanese'],
       rating: 4.8,
-      price: 100,
-      bio: 'Multilingual medical companion specializing in family support and insurance assistance.',
-      region: 'futian',
-      distance: 3.2,
-      specialties: ['Family support', 'Insurance assistance', 'Medication guidance'],
-      introduction: 'I provide comprehensive family support, including insurance assistance and medication guidance. I can communicate in English, Chinese, and Japanese, and I am knowledgeable about healthcare services in Shenzhen.'
+      price: 399,
+      bio: 'A city-specific planning pack for foreigners arriving in Shanghai for work, study, or long-stay residence.',
+      region: 'shanghai',
+      distance: 2,
+      specialties: [
+        'Shanghai timing and booking preparation',
+        'Passport and form checklist',
+        'English communication support',
+        'Report pickup and next-step routing'
+      ],
+      introduction: 'Shanghai arrivals often need to act quickly because health checks can affect residence permit timelines. This plan helps you understand the likely path, prepare documents, and coordinate English support before and after the visit.'
     },
     {
       id: 3,
-      name: 'Wang Fang',
-      avatar: 'https://ai-public.mastergo.com/ai/img_res/dcf3e9ff34c7eb28a3a85370c9bd2af9.jpg',
+      name: 'Shenzhen Full Body Checkup Package Match',
+      avatar: 'https://ai-public.mastergo.com/ai/img_res/5d34a55337f8270b24cd5a39c8cc8e83.jpg',
       gender: 'female',
+      serviceType: 'full_checkup',
       languages: ['english', 'chinese', 'spanish'],
       rating: 4.7,
-      price: 90,
-      bio: 'Friendly and patient, with experience in pediatric care and family support.',
-      region: 'luohu',
-      distance: 4.1,
-      specialties: ['Pediatric care', 'Family support', 'Child-friendly hospitals'],
-      introduction: 'I love working with children and families, providing support for pediatric care and connecting you with child-friendly hospitals. I can communicate in English, Chinese, and Spanish.'
+      price: 199,
+      bio: 'For self-pay visitors and expat employees who want a private annual or comprehensive checkup without overbuying tests.',
+      region: 'shenzhen',
+      distance: 3,
+      specialties: [
+        'Basic, comprehensive, and executive package comparison',
+        'Hospital type and budget matching',
+        'English report availability check',
+        'Unnecessary-test prevention questions'
+      ],
+      introduction: 'Private full-body checkups are different from official visa medical exams. We help you compare package levels, ask safer screening questions, and choose a path that fits your city, budget, age, and reporting needs.'
     },
     {
       id: 4,
-      name: 'Chen Hao',
-      avatar: 'https://randomuser.me/api/portraits/men/4.jpg',
-      gender: 'male',
-      languages: ['english', 'chinese', 'french'],
-      rating: 4.9,
-      price: 130,
-      bio: 'Reliable companion with experience in emergency support and follow-up care.',
-      region: 'baoan',
-      distance: 5.3,
-      specialties: ['24/7 emergency support', 'Follow-up care', 'Medication guidance'],
-      introduction: 'I provide reliable support for emergency situations and follow-up care. I can communicate in English, Chinese, and French, and I am familiar with hospital procedures in Shenzhen.'
+      name: 'Guangzhou 40+ Preventive Screening Planner',
+      avatar: 'https://ai-public.mastergo.com/ai/img_res/9060a6b3952e4511297bd2460561679f.jpg',
+      gender: 'female',
+      serviceType: 'full_checkup',
+      languages: ['english', 'chinese', 'german'],
+      rating: 4.8,
+      price: 249,
+      bio: 'For US and European self-pay visitors comparing China checkup options for cardiovascular, metabolic, and cancer screening.',
+      region: 'guangzhou',
+      distance: 4,
+      specialties: [
+        'Age-aware screening conversation guide',
+        'Public international department vs private hospital comparison',
+        'English report and doctor review planning',
+        'Follow-up routing if results need attention'
+      ],
+      introduction: 'This plan is designed for people who want preventive screening while in China but do not want a confusing or excessive package. We help you prepare the right questions and route abnormal findings to an appropriate follow-up visit.'
     },
     {
       id: 5,
-      name: 'Liu Xin',
-      avatar: 'https://randomuser.me/api/portraits/women/5.jpg',
+      name: 'On-site Medical Escort & Interpretation',
+      avatar: 'https://ai-public.mastergo.com/ai/img_res/dcf3e9ff34c7eb28a3a85370c9bd2af9.jpg',
       gender: 'female',
-      languages: ['english', 'chinese', 'german'],
-      rating: 4.6,
-      price: 85,
-      bio: 'Caring and attentive, with experience in medication guidance and follow-up care.',
-      region: 'longgang',
-      distance: 6.7,
-      specialties: ['Medication guidance', 'Follow-up care', 'Family support'],
-      introduction: 'I specialize in providing medication guidance and follow-up care support. I can communicate in English, Chinese, and German, and I am dedicated to ensuring your comfort during medical visits.'
+      serviceType: 'escort',
+      languages: ['english', 'chinese', 'french'],
+      rating: 4.9,
+      price: 599,
+      bio: 'For foreigners who want someone to help with registration, payment, departments, translation, and report pickup.',
+      region: 'shenzhen',
+      distance: 2,
+      specialties: [
+        'Hospital navigation and check-in',
+        'English-Chinese interpretation',
+        'Payment and report collection support',
+        'Privacy-aware visit coordination'
+      ],
+      introduction: 'Choose this plan when the medical system is possible but hard to use in practice. The escort helps you move through registration, testing, payment, and report pickup while keeping the role limited to coordination and interpretation.'
     },
     {
       id: 6,
-      name: 'Zhao Jun',
-      avatar: 'https://randomuser.me/api/portraits/men/6.jpg',
-      gender: 'male',
+      name: 'Shanghai Report Translation & Follow-up Routing',
+      avatar: 'https://ai-public.mastergo.com/ai/img_res/339f341e962c49c84dd7d9238ad3c8f3.jpg',
+      gender: 'female',
+      serviceType: 'report',
       languages: ['english', 'chinese', 'korean'],
-      rating: 4.7,
-      price: 95,
-      bio: 'Energetic and reliable, with experience in emergency support and insurance assistance.',
-      region: 'longhua',
-      distance: 7.2,
-      specialties: ['24/7 emergency support', 'Insurance assistance', 'Follow-up care'],
-      introduction: 'I provide energetic and reliable support for emergency situations and insurance assistance. I can communicate in English, Chinese, and Korean, and I am familiar with emergency procedures.'
-    },
-    {
-      id: 7,
-      name: 'Sun Li',
-      avatar: 'https://randomuser.me/api/portraits/women/7.jpg',
-      gender: 'female',
-      languages: ['english', 'chinese'],
-      rating: 4.8,
-      price: 110,
-      bio: 'Detail-oriented with experience in follow-up care and medication guidance.',
-      region: 'guangming',
-      distance: 8.5,
-      specialties: ['Follow-up care', 'Medication guidance', 'Family support'],
-      introduction: 'I provide detail-oriented support for follow-up care and medication guidance. I can communicate in English and Chinese, and I am dedicated to helping you manage your healthcare needs.'
-    },
-    {
-      id: 8,
-      name: 'Wu Dong',
-      avatar: 'https://randomuser.me/api/portraits/men/8.jpg',
-      gender: 'male',
-      languages: ['english', 'chinese', 'japanese'],
       rating: 4.6,
-      price: 90,
-      bio: 'Patient and compassionate, with experience in family support and vaccination assistance.',
-      region: 'pingshan',
-      distance: 9.8,
-      specialties: ['Family support', 'Vaccination assistance', 'Child-friendly hospitals'],
-      introduction: 'I provide patient and compassionate support for families, including vaccination assistance and connecting you with child-friendly healthcare facilities. I can communicate in English, Chinese, and Japanese.'
-    },
-    {
-      id: 9,
-      name: 'Xu Yan',
-      avatar: 'https://randomuser.me/api/portraits/women/9.jpg',
-      gender: 'female',
-      languages: ['english', 'chinese', 'spanish'],
-      rating: 4.9,
-      price: 125,
-      bio: 'Highly rated companion with experience in pediatric care and medication guidance.',
-      region: 'dapeng',
-      distance: 10.3,
-      specialties: ['Pediatric care', 'Medication guidance', 'Follow-up care'],
-      introduction: 'I provide high-quality support for pediatric care, medication guidance, and follow-up care. I can communicate in English, Chinese, and Spanish, and I am dedicated to ensuring your child\'s comfort.'
-    },
-    {
-      id: 10,
-      name: 'Hu Tao',
-      avatar: 'https://randomuser.me/api/portraits/men/10.jpg',
-      gender: 'male',
-      languages: ['english', 'chinese', 'french'],
-      rating: 4.7,
-      price: 105,
-      bio: 'Knowledgeable companion specializing in insurance assistance and 24/7 emergency support.',
-      region: 'yantian',
-      distance: 11.2,
-      specialties: ['Insurance assistance', '24/7 emergency support', 'Family support'],
-      introduction: 'I provide knowledgeable support for insurance assistance and emergency situations. I can communicate in English, Chinese, and French, and I am here to help you navigate any healthcare challenges.'
+      price: 149,
+      bio: 'For people who already completed tests and need report organization, English explanation of labels, and next-step routing.',
+      region: 'shanghai',
+      distance: 1,
+      specialties: [
+        'Report terminology translation',
+        'Result organization for insurance or employer use',
+        'Questions to ask a doctor',
+        'Referral routing for abnormal findings'
+      ],
+      introduction: 'This plan does not interpret results as a diagnosis. It helps you understand the structure and labels of Chinese reports, prepare questions for a licensed doctor, and decide whether a follow-up appointment should be arranged.'
     }
   ])
 

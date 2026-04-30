@@ -1,64 +1,44 @@
 <script setup>
-import { ref } from 'vue';
+import { onMounted, ref } from 'vue'
+import HeroSection from '../components/HeroSection.vue'
+import FeaturedCompanions from '../components/FeaturedCompanions.vue'
+import HowItWorks from '../components/HowItWorks.vue'
+import CompanionModal from '../components/CompanionModal.vue'
+import ContactModal from '../components/ContactModal.vue'
+import NewsPreview from '../components/NewsPreview.vue'
+import ConsultationForm from '../components/ConsultationForm.vue'
+import { setPageSeo } from '../utils/seo'
 
-// 导入功能组件
-import Header from '../components/Header.vue';
-import HeroSection from '../components/HeroSection.vue';
-import FeaturedCompanions from '../components/FeaturedCompanions.vue';
-import HowItWorks from '../components/HowItWorks.vue';
-import CompanionModal from '../components/CompanionModal.vue';
-import ContactModal from '../components/ContactModal.vue';
-import Footer from '../components/Footer.vue';
+const selectedCompanion = ref(null)
+const showContactModal = ref(false)
 
-// 状态管理
-const selectedCompanion = ref(null);
-const showContactModal = ref(false);
-
-// 打开陪护人员详情弹窗
-const openCompanionModal = (companion) => {
-  selectedCompanion.value = companion;
-};
-
-// 关闭陪护人员详情弹窗
-const closeCompanionModal = () => {
-  selectedCompanion.value = null;
-};
-
-// 打开联系弹窗
-const openContactModal = () => {
-  showContactModal.value = true;
-};
-
-// 关闭联系弹窗
-const closeContactModal = () => {
-  showContactModal.value = false;
-};
+onMounted(() => {
+  setPageSeo({
+    title: 'China health check and visa medical guide for foreigners',
+    description: 'Plain-English China health check guidance for foreign teachers, work visa applicants, international students, expat employees, and self-pay visitors.',
+    path: '/'
+  })
+})
 </script>
 
 <template>
-  <div class="min-h-screen bg-gray-50">
-    
-    <!-- 英雄区域 -->
+  <div class="min-h-screen bg-[#f8faf8]">
     <HeroSection />
-    
-    <!-- 精选陪护人员 -->
-    <FeaturedCompanions @open-modal="openCompanionModal" />
-    
-    <!-- 服务流程 -->
+    <FeaturedCompanions @open-modal="selectedCompanion = $event" />
     <HowItWorks />
-    
-    <!-- 陪护人员详情弹窗 -->
-    <CompanionModal 
-      v-if="selectedCompanion" 
+    <ConsultationForm />
+    <NewsPreview />
+
+    <CompanionModal
+      v-if="selectedCompanion"
       :companion="selectedCompanion"
-      @close="closeCompanionModal"
-      @contact="openContactModal"
+      @close="selectedCompanion = null"
+      @contact="showContactModal = true"
     />
-    
-    <!-- 联系弹窗 -->
-    <ContactModal 
+
+    <ContactModal
       v-if="showContactModal"
-      @close="closeContactModal"
+      @close="showContactModal = false"
     />
   </div>
 </template>

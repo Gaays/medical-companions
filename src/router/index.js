@@ -1,6 +1,8 @@
 import { createRouter, createWebHistory } from 'vue-router';
 import HomePage from '../pages/HomePage.vue';
 import CompanionsList from '../pages/CompanionsList.vue';
+import NewsList from '../pages/NewsList.vue';
+import NewsArticle from '../pages/NewsArticle.vue';
 
 const routes = [
   {
@@ -9,9 +11,23 @@ const routes = [
     component: HomePage
   },
   {
-    path: '/companions',
-    name: 'companions',
+    path: '/services',
+    name: 'services',
     component: CompanionsList
+  },
+  {
+    path: '/companions',
+    redirect: '/services'
+  },
+  {
+    path: '/news',
+    name: 'news',
+    component: NewsList
+  },
+  {
+    path: '/news/:slug',
+    name: 'news-article',
+    component: NewsArticle
   }
 ];
 

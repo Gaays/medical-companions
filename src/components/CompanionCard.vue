@@ -1,123 +1,66 @@
 <script setup>
-import { computed } from "vue";
-import { useI18n } from "vue-i18n";
+import { computed } from 'vue'
+import { useI18n } from 'vue-i18n'
 
-// 组件属性
 const props = defineProps({
   companion: {
     type: Object,
-    required: true,
-  },
-});
+    required: true
+  }
+})
 
-// 事件定义
-const emit = defineEmits(["view-details"]);
+const { t } = useI18n()
 
-// i18n 实例
-const { t } = useI18n();
+const emit = defineEmits(['view-details'])
 
-// 计算属性：格式化语言显示
-const formattedLanguages = computed(() => {
-  return props.companion.languages.map((lang) => {
-    // 根据语言返回对应的国旗和名称
-    switch (lang) {
-      case "english":
-        return { flag: "🇺🇸", name: t("languages.english"), displayName: "English" };
-      case "chinese":
-        return { flag: "🇨🇳", name: t("languages.chinese"), displayName: "Chinese" };
-      case "spanish":
-        return { flag: "🇪🇸", name: t("languages.spanish"), displayName: "Spanish" };
-      case "french":
-        return { flag: "🇫🇷", name: t("languages.french"), displayName: "French" };
-      case "german":
-        return { flag: "🇩🇪", name: t("languages.german"), displayName: "German" };
-      case "japanese":
-        return { flag: "🇯🇵", name: t("languages.japanese"), displayName: "Japanese" };
-      case "korean":
-        return { flag: "🇰🇷", name: t("languages.korean"), displayName: "Korean" };
-      default:
-        return { flag: "🌐", name: lang, displayName: lang };
-    }
-  });
-});
+const formattedRegion = computed(() => t(`regions.${props.companion.region}`))
+const serviceType = computed(() => t(`serviceTypes.${props.companion.serviceType}`))
+const usdPrice = computed(() => Math.round(props.companion.price / 7))
 
-// 计算属性：格式化区域显示
-const formattedRegion = computed(() => {
-  return t(`regions.${props.companion.region}`);
-});
-
-// 计算属性：美元价格（汇率假设为1美元=7人民币）
-const usdPrice = computed(() => {
-  return (props.companion.price / 7).toFixed(2);
-});
-
-// 查看详情方法
 const handleViewDetails = () => {
-  emit("view-details", props.companion);
-};
+  emit('view-details', props.companion)
+}
 </script>
 
 <template>
-  <div 
-    class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition cursor-pointer"
-    @click="handleViewDetails"
-  >
-    <div class="relative">
-      <img
-        :src="companion.avatar"
-        :alt="companion.name"
-        class="w-full h-48 object-cover"
-      />
-      <div
-        class="absolute top-2 right-2 bg-white rounded-full px-2 py-1 flex items-center text-sm"
+  <article class="service-card flex h-full flex-col rounded-lg border border-[#d8e3de] bg-white p-5 shadow-sm transition hover:-translate-y-1 hover:shadow-md">
+    <div class="mb-4 flex items-start justify-between gap-3">
+      <div>
+        <span class="inline-flex rounded-full bg-[#e7f2ed] px-3 py-1 text-xs font-semibold text-[#245c4c]">
+          {{ serviceType }}
+        </span>
+        <h3 class="mt-4 text-xl font-bold leading-snug text-[#17342d]">{{ companion.name }}</h3>
+      </div>
+      <div class="shrink-0 rounded-lg bg-[#f2eee5] px-3 py-2 text-right">
+        <span class="block text-xs font-semibold text-[#72592f]">From</span>
+        <span class="block text-lg font-bold text-[#17342d]">¥{{ companion.price }}</span>
+        <span class="block text-xs text-[#66736f]">~${{ usdPrice }}</span>
+      </div>
+    </div>
+
+    <p class="mb-4 flex-1 text-sm leading-6 text-[#5f6d68]">{{ companion.bio }}</p>
+
+    <div class="mb-5 flex flex-wrap gap-2">
+      <span
+        v-for="specialty in companion.specialties.slice(0, 3)"
+        :key="specialty"
+        class="rounded-md bg-[#f5f7f4] px-2.5 py-1 text-xs text-[#4b5c56]"
       >
-        <font-awesome-icon icon="star" class="text-yellow-400 mr-1" />
-        <span>{{ companion.rating }}</span>
-      </div>
+        {{ specialty }}
+      </span>
     </div>
-    <div class="p-4">
-      <div class="flex justify-between items-start mb-2">
-        <h4 class="font-bold text-lg">{{ companion.name }}</h4>
-        <div class="text-right">
-          <span class="text-primary font-medium block">¥{{ companion.price }}/h</span>
-          <span class="text-gray-500 text-sm">${{ usdPrice }}/h</span>
-        </div>
-      </div>
-      <div class="flex flex-wrap gap-2 mb-3">
-        <span
-          v-for="(lang, i) in formattedLanguages"
-          :key="i"
-          class="bg-gray-100 text-gray-700 px-2 py-1 rounded-full text-xs"
-        >
-          {{ lang.flag }} {{ lang.displayName }}
-        </span>
-      </div>
-      <p class="text-gray-600 text-sm mb-4 line-clamp-2">
-        {{ companion.bio }}
-      </p>
-      <div class="flex justify-between items-center">
-        <span class="text-gray-500 text-sm flex items-center">
-          <font-awesome-icon icon="map-marker-alt" class="mr-1" />
-          {{ formattedRegion }}
-        </span>
-        <button
-          class="!rounded-button whitespace-nowrap bg-primary text-white px-4 py-2 text-sm hover:bg-blue-700 transition"
-          @click.stop="handleViewDetails"
-        >
-          {{ t("companion.view_profile") }}
-        </button>
-      </div>
+
+    <div class="mt-auto flex flex-col gap-3 border-t border-[#e3ebe7] pt-4 sm:flex-row sm:items-center sm:justify-between">
+      <span class="text-sm font-medium text-[#5f6d68]">
+        <font-awesome-icon icon="location-dot" class="mr-1 text-[#3f7d68]" />
+        {{ formattedRegion }}
+      </span>
+      <button
+        class="rounded-md bg-[#0f5f4c] px-4 py-2 text-sm font-semibold text-white transition hover:bg-[#0b4336]"
+        @click.stop="handleViewDetails"
+      >
+        {{ t('companion.view_profile') }}
+      </button>
     </div>
-  </div>
+  </article>
 </template>
-
-<style scoped>
-/* 页面特定样式 */
-:deep(.bg-primary) {
-  background-color: var(--primary-color);
-}
-
-:deep(.text-primary) {
-  color: var(--primary-color);
-}
-</style>

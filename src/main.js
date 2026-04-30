@@ -11,9 +11,33 @@ import zh from '../locales/zh'
 // 导入 Font Awesome 核心模块
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
-import { fas } from '@fortawesome/free-solid-svg-icons'
-// 添加所有图标到库中
-library.add(fas)
+import {
+  faBars,
+  faCheckCircle,
+  faChevronDown,
+  faCircleCheck,
+  faFileMedical,
+  faLanguage,
+  faLocationDot,
+  faLock,
+  faRoute,
+  faShieldHalved,
+  faTimes
+} from '@fortawesome/free-solid-svg-icons'
+
+library.add(
+  faBars,
+  faCheckCircle,
+  faChevronDown,
+  faCircleCheck,
+  faFileMedical,
+  faLanguage,
+  faLocationDot,
+  faLock,
+  faRoute,
+  faShieldHalved,
+  faTimes
+)
 
 // 创建 i18n 实例
 const i18n = createI18n({

@@ -1,76 +1,47 @@
 <script setup>
-import { ref } from "vue";
-import { useI18n } from "vue-i18n";
-import { Search, Calendar } from "@element-plus/icons-vue";
+import { useI18n } from 'vue-i18n'
+import { Search, Calendar, Connection } from '@element-plus/icons-vue'
 
-// i18n 实例
-const { t } = useI18n();
+const { t, tm } = useI18n()
 
-// 服务流程数据
-const howItWorks = ref([
-  {
-    title: "Find Your Companion",
-    description:
-      "Browse our network of professional medical companions in Shenzhen.",
-  },
-  {
-    title: "Book Appointment",
-    description: "Select your preferred companion and schedule your service.",
-  },
-  {
-    title: "Get Assistance",
-    description:
-      "Your companion will meet you and assist with all medical needs.",
-  },
-]);
-
-const primaryColor = ref("#0052CC");
+const icons = [Search, Calendar, Connection]
 </script>
 
 <template>
-  <section class="py-16 bg-gray-50">
+  <section class="bg-[#17342d] py-14 text-white md:py-18">
     <div class="container mx-auto px-4">
-      <h3 class="text-2xl font-bold text-center mb-12 text-gray-800">
-        {{ t("how_it_works.title") }}
-      </h3>
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+      <div class="mb-9 max-w-3xl">
+        <p class="text-sm font-semibold uppercase tracking-[0.18em] text-[#91d0b7]">Process</p>
+        <h2 class="mt-2 text-2xl font-bold text-white md:text-3xl">{{ t('how_it_works.title') }}</h2>
+        <p class="mt-3 leading-7 text-[#c6d8d1]">{{ t('how_it_works.subtitle') }}</p>
+      </div>
+
+      <div class="grid gap-5 md:grid-cols-3">
         <div
-          v-for="(step, index) in howItWorks"
-          :key="index"
-          class="text-center"
+          v-for="(step, index) in tm('how_it_works.steps')"
+          :key="step.title"
+          class="rounded-lg border border-white/10 bg-white/7 p-5"
         >
-          <div
-            class="bg-white rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4 shadow-md"
-          >
-            <!-- 第一个图标：Star -->
-            <el-icon
-              v-if="index === 0"
-              :color="primaryColor"
-              :size="25"
-              class="text-primary text-2xl"
-            >
-              <Search />
-            </el-icon>
-            <!-- 第二个图标：Calendar -->
-            <el-icon
-              v-else-if="index === 1"
-              :size="25"
-              :color="primaryColor"
-              class="text-primary text-2xl"
-            >
-              <Calendar />
-            </el-icon>
-            <!-- 第三个图标：Logo SVG -->
-            <img
-              v-else
-              src="/src/assets/svg/logo.svg"
-              :alt="step.title"
-              class="w-8 h-8 text-primary"
-            />
+          <div class="mb-5 flex h-12 w-12 items-center justify-center rounded-md bg-[#91d0b7] text-[#17342d]">
+            <component :is="icons[index]" class="h-6 w-6" />
           </div>
-          <h4 class="font-bold text-lg mb-2">{{ step.title }}</h4>
-          <p class="text-gray-600">{{ step.description }}</p>
+          <h3 class="mb-2 text-xl font-bold text-white">{{ step.title }}</h3>
+          <p class="leading-7 text-[#c6d8d1]">{{ step.description }}</p>
         </div>
+      </div>
+
+      <div class="mt-8 rounded-lg bg-white p-5 text-[#17342d] md:p-6">
+        <h3 class="mb-4 text-xl font-bold">{{ t('how_it_works.painTitle') }}</h3>
+        <ul class="grid gap-3 md:grid-cols-2">
+          <li
+            v-for="pain in tm('how_it_works.pains')"
+            :key="pain"
+            class="flex items-start gap-2 text-[#4f5f59]"
+          >
+            <font-awesome-icon icon="circle-check" class="mt-1 text-[#0f5f4c]" />
+            <span>{{ pain }}</span>
+          </li>
+        </ul>
       </div>
     </div>
   </section>

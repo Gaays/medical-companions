@@ -1,72 +1,100 @@
 <script setup>
-import { ref } from 'vue';
-import { useI18n } from 'vue-i18n';
+import { ref } from 'vue'
+import { useI18n } from 'vue-i18n'
 
-// i18n 实例
-const { t, locale } = useI18n();
+const { t, locale } = useI18n()
+const showLanguageMenu = ref(false)
+const showMobileMenu = ref(false)
 
-// 语言切换状态
-const showLanguageMenu = ref(false);
-
-// 切换语言显示状态
-const toggleLanguageMenu = () => {
-  showLanguageMenu.value = !showLanguageMenu.value;
-};
-
-// 语言切换函数
 const switchLanguage = (lang) => {
-  locale.value = lang;
-  showLanguageMenu.value = false;
-};
+  locale.value = lang
+  showLanguageMenu.value = false
+  showMobileMenu.value = false
+}
+
+const navItems = [
+  { to: '/', labelKey: 'header.home' },
+  { to: '/services', labelKey: 'header.companions' },
+  { to: '/news', labelKey: 'News' },
+  { href: '/#consult', labelKey: 'Consultation' }
+]
 </script>
 
 <template>
-  <header class="sticky top-0 z-50 bg-white shadow-sm">
-    <div class="container mx-auto px-4 py-3 flex items-center justify-between">
-      <div class="flex items-center space-x-2">
-        <img src="../assets/svg/logo.svg" alt="CareConnect Logo" class="h-8 w-auto" />
-        <h1 class="text-xl font-bold text-gray-800">{{ t('app.name') }}</h1>
-      </div>
-      <nav class="hidden md:flex space-x-8">
-        <router-link to="/" class="text-gray-700 hover:text-primary transition">{{ t('header.home') }}</router-link>
-        <router-link to="/companions" class="text-gray-700 hover:text-primary transition">{{ t('header.companions') }}</router-link>
-        <a href="#" class="text-gray-700 hover:text-primary transition">{{ t('header.how_it_works') }}</a>
-        <a href="#" class="text-gray-700 hover:text-primary transition">{{ t('header.about_us') }}</a>
+  <header class="sticky top-0 z-40 border-b border-[#d9e4df] bg-white/95 backdrop-blur">
+    <div class="container mx-auto flex items-center justify-between px-4 py-3">
+      <router-link to="/" class="flex items-center gap-3 text-[#17342d] no-underline">
+        <img src="../assets/svg/logo.svg" alt="China Health Check Guide" class="h-8 w-8" />
+        <div>
+          <div class="text-base font-bold leading-tight md:text-lg">{{ t('app.name') }}</div>
+          <div class="hidden text-xs text-[#5f6d68] sm:block">{{ t('app.slogan') }}</div>
+        </div>
+      </router-link>
+
+      <nav class="hidden items-center gap-6 md:flex">
+        <template v-for="item in navItems" :key="item.labelKey">
+          <router-link
+            v-if="item.to"
+            :to="item.to"
+            class="text-sm font-semibold text-[#4f5f59] no-underline transition hover:text-[#0f5f4c]"
+          >
+            {{ item.labelKey.startsWith('header.') ? t(item.labelKey) : item.labelKey }}
+          </router-link>
+          <a
+            v-else
+            :href="item.href"
+            class="text-sm font-semibold text-[#4f5f59] no-underline transition hover:text-[#0f5f4c]"
+          >
+            {{ item.labelKey }}
+          </a>
+        </template>
       </nav>
-      <div class="flex items-center space-x-4">
-        <!-- 语言切换器 -->
+
+      <div class="flex items-center gap-3">
         <div class="relative">
-          <button 
-            class="flex items-center space-x-1 text-gray-700 hover:text-primary transition"
-            @click="toggleLanguageMenu"
+          <button
+            class="rounded-md border border-[#c9d8d1] px-3 py-2 text-sm font-semibold text-[#4f5f59]"
+            @click="showLanguageMenu = !showLanguageMenu"
           >
-            <span class="text-sm">{{ locale === 'en' ? 'EN' : '中文' }}</span>
-            <font-awesome-icon icon="chevron-down" class="text-xs" />
+            {{ locale === 'en' ? 'EN' : '中文' }}
+            <font-awesome-icon icon="chevron-down" class="ml-1 text-xs" />
           </button>
-          <!-- 语言切换菜单 -->
-          <div 
-            v-if="showLanguageMenu" 
-            class="absolute right-0 mt-2 w-28 bg-white rounded-md shadow-lg py-1 z-10"
-          >
-            <button 
-              @click="switchLanguage('en')"
-              class="block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
-            >
-              English
-            </button>
-            <button 
-              @click="switchLanguage('zh')"
-              class="block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
-            >
-              中文
-            </button>
+          <div v-if="showLanguageMenu" class="absolute right-0 mt-2 w-28 rounded-md border border-[#d9e4df] bg-white py-1 shadow-lg">
+            <button class="block w-full px-4 py-2 text-left text-sm hover:bg-[#f5f7f4]" @click="switchLanguage('en')">English</button>
+            <button class="block w-full px-4 py-2 text-left text-sm hover:bg-[#f5f7f4]" @click="switchLanguage('zh')">中文</button>
           </div>
         </div>
-        <!-- 移动端汉堡菜单按钮 -->
-        <button class="md:hidden">
-          <font-awesome-icon icon="bars" class="text-xl text-gray-700" />
+
+        <button
+          class="flex h-10 w-10 items-center justify-center rounded-md border border-[#c9d8d1] text-[#17342d] md:hidden"
+          @click="showMobileMenu = !showMobileMenu"
+          aria-label="Toggle navigation"
+        >
+          <font-awesome-icon :icon="showMobileMenu ? 'times' : 'bars'" />
         </button>
       </div>
     </div>
+
+    <nav v-if="showMobileMenu" class="border-t border-[#d9e4df] bg-white px-4 py-3 md:hidden">
+      <div class="container mx-auto grid gap-2">
+        <template v-for="item in navItems" :key="item.labelKey">
+          <router-link
+            v-if="item.to"
+            :to="item.to"
+            class="rounded-md px-3 py-3 font-semibold text-[#4f5f59] no-underline hover:bg-[#f5f7f4]"
+            @click="showMobileMenu = false"
+          >
+            {{ item.labelKey.startsWith('header.') ? t(item.labelKey) : item.labelKey }}
+          </router-link>
+          <a
+            v-else
+            :href="item.href"
+            class="rounded-md px-3 py-3 font-semibold text-[#4f5f59] no-underline hover:bg-[#f5f7f4]"
+          >
+            {{ item.labelKey }}
+          </a>
+        </template>
+      </div>
+    </nav>
   </header>
 </template>
