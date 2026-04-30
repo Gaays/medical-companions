@@ -100,7 +100,7 @@ export default {
     title: '获取体检规划帮助',
     description: '请发送城市、体检用途、抵达日期和偏好的联系方式。首次联系请不要发送敏感诊断信息。',
     email: '邮箱',
-    email_address: 'doctor.me@@email.com',
+    email_address: 'doctor.me@email.com',
     whatsapp: 'WhatsApp',
     whatsapp_number: '+86 123 4567 8910',
     close: '关闭',

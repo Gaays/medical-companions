@@ -22,9 +22,9 @@ const { t } = useI18n()
           <a href="#consult" class="rounded-md bg-[#0f5f4c] px-5 py-3 text-center font-semibold text-white transition hover:bg-[#0b4336]">
             {{ t('hero.cta') }}
           </a>
-          <router-link to="/services" class="rounded-md border border-[#b6cdc3] bg-white px-5 py-3 text-center font-semibold text-[#17342d] transition hover:border-[#0f5f4c]">
+          <NuxtLink to="/services" class="rounded-md border border-[#b6cdc3] bg-white px-5 py-3 text-center font-semibold text-[#17342d] transition hover:border-[#0f5f4c]">
             {{ t('hero.secondary_cta') }}
-          </router-link>
+          </NuxtLink>
         </div>
         <p class="max-w-2xl rounded-md bg-[#fff8e6] px-4 py-3 text-sm leading-6 text-[#72592f]">
           {{ t('hero.note') }}

@@ -1,14 +1,21 @@
-<script setup>
-import { onMounted } from 'vue'
-import { newsArticles } from '../data/news'
-import { setPageSeo } from '../utils/seo'
+<script setup lang="ts">
+const { data: newsArticles } = await useFetch('/api/news', {
+  default: () => [],
+})
 
-onMounted(() => {
-  setPageSeo({
-    title: 'China health check guides for foreigners',
-    description: 'Guides about China visa medical checks, full body checkups, English reports, report translation, and follow-up planning for foreigners.',
-    path: '/news'
-  })
+const siteUrl = useRuntimeConfig().public.siteUrl
+
+useSeoMeta({
+  title: 'China health check guides for foreigners | China Health Check Guide',
+  description: 'Guides about China visa medical checks, full body checkups, English reports, report translation, and follow-up planning for foreigners.',
+  ogTitle: 'China health check guides for foreigners | China Health Check Guide',
+  ogDescription: 'Guides about China visa medical checks, full body checkups, English reports, report translation, and follow-up planning for foreigners.',
+  ogType: 'website',
+  twitterCard: 'summary_large_image',
+})
+
+useHead({
+  link: [{ rel: 'canonical', href: `${siteUrl}/news` }],
 })
 </script>
 
@@ -48,14 +55,14 @@ onMounted(() => {
             <span>{{ article.date }}</span>
           </div>
           <h2 class="mb-3 text-xl font-bold leading-snug text-[#17342d]">
-            <router-link :to="`/news/${article.slug}`" class="text-inherit hover:text-[#0f5f4c]">
+            <NuxtLink :to="`/news/${article.slug}`" class="text-inherit hover:text-[#0f5f4c]">
               {{ article.title }}
-            </router-link>
+            </NuxtLink>
           </h2>
           <p class="mb-5 leading-7 text-[#5f6d68]">{{ article.description }}</p>
-          <router-link :to="`/news/${article.slug}`" class="font-semibold text-[#0f5f4c]">
+          <NuxtLink :to="`/news/${article.slug}`" class="font-semibold text-[#0f5f4c]">
             Read article
-          </router-link>
+          </NuxtLink>
         </article>
       </div>
     </section>

@@ -1,17 +1,13 @@
 <script setup>
-// 导入全局组件
-import Header from './components/Header.vue';
-import Footer from './components/Footer.vue';
 </script>
 
 <template>
   <div class="min-h-screen flex flex-col">
     <Header />
     <main class="flex-1">
-      <router-view />
+      <NuxtPage />
     </main>
     <Footer />
   </div>
 </template>
-
 

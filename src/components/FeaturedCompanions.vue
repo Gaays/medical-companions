@@ -20,9 +20,9 @@ const featuredCompanions = computed(() => companions.value.slice(0, 3))
           <h2 class="mt-2 text-2xl font-bold text-[#17342d] md:text-3xl">{{ t('featured.title') }}</h2>
           <p class="mt-2 max-w-2xl leading-7 text-[#5f6d68]">{{ t('featured.subtitle') }}</p>
         </div>
-        <router-link to="/services" class="font-semibold text-[#0f5f4c] hover:text-[#0b4336]">
+        <NuxtLink to="/services" class="font-semibold text-[#0f5f4c] hover:text-[#0b4336]">
           {{ t('featured.view_all') }}
-        </router-link>
+        </NuxtLink>
       </div>
 
       <div class="grid grid-cols-1 gap-5 md:grid-cols-3">

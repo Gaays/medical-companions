@@ -1,5 +1,8 @@
-<script setup>
-import { latestNews } from '../data/news'
+<script setup lang="ts">
+const { data: latestNews } = await useFetch('/api/news', {
+  query: { limit: 3 },
+  default: () => [],
+})
 </script>
 
 <template>
@@ -10,9 +13,9 @@ import { latestNews } from '../data/news'
           <p class="text-sm font-semibold uppercase tracking-[0.18em] text-[#3f7d68]">Guides for SEO and real questions</p>
           <h2 class="mt-2 text-2xl font-bold text-[#17342d] md:text-3xl">Latest China health check guides</h2>
         </div>
-        <router-link to="/news" class="font-semibold text-[#0f5f4c] hover:text-[#0b4336]">
+        <NuxtLink to="/news" class="font-semibold text-[#0f5f4c] hover:text-[#0b4336]">
           View all guides
-        </router-link>
+        </NuxtLink>
       </div>
 
       <div class="grid gap-5 md:grid-cols-3">
@@ -26,14 +29,14 @@ import { latestNews } from '../data/news'
             <span>{{ article.readTime }}</span>
           </div>
           <h3 class="mb-3 text-lg font-bold leading-snug text-[#17342d]">
-            <router-link :to="`/news/${article.slug}`" class="text-inherit hover:text-[#0f5f4c]">
+            <NuxtLink :to="`/news/${article.slug}`" class="text-inherit hover:text-[#0f5f4c]">
               {{ article.title }}
-            </router-link>
+            </NuxtLink>
           </h3>
           <p class="mb-5 text-sm leading-6 text-[#5f6d68]">{{ article.description }}</p>
-          <router-link :to="`/news/${article.slug}`" class="text-sm font-semibold text-[#0f5f4c]">
+          <NuxtLink :to="`/news/${article.slug}`" class="text-sm font-semibold text-[#0f5f4c]">
             Read guide
-          </router-link>
+          </NuxtLink>
         </article>
       </div>
     </div>

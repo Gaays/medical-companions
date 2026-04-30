@@ -1,33 +1,37 @@
-<script setup>
-import { computed, onMounted, watch } from 'vue'
-import { useRoute } from 'vue-router'
-import { newsArticles } from '../data/news'
-import { setPageSeo } from '../utils/seo'
+<script setup lang="ts">
+import { computed } from 'vue'
 
 const route = useRoute()
 
-const article = computed(() => newsArticles.find((item) => item.slug === route.params.slug))
+const { data: article } = await useFetch(`/api/news/${route.params.slug}`, {
+  default: () => null,
+})
 
-function updateSeo() {
-  if (!article.value) return
-  setPageSeo({
-    title: article.value.title,
-    description: article.value.description,
-    path: `/news/${article.value.slug}`,
-    type: 'article'
-  })
-}
+const siteUrl = useRuntimeConfig().public.siteUrl
+const title = computed(() => article.value ? `${article.value.title} | China Health Check Guide` : 'Guide not found | China Health Check Guide')
+const description = computed(() => article.value?.description ?? 'China health check guide not found.')
+const canonical = computed(() => `${siteUrl}/news/${route.params.slug}`)
 
-onMounted(updateSeo)
-watch(() => route.params.slug, updateSeo)
+useSeoMeta({
+  title,
+  description,
+  ogTitle: title,
+  ogDescription: description,
+  ogType: 'article',
+  twitterCard: 'summary_large_image',
+})
+
+useHead({
+  link: [{ rel: 'canonical', href: canonical }],
+})
 </script>
 
 <template>
   <main v-if="article" class="bg-[#fbfcfb]">
     <article class="container mx-auto max-w-3xl px-4 py-10 md:py-16">
-      <router-link to="/news" class="mb-8 inline-flex font-semibold text-[#0f5f4c]">
+      <NuxtLink to="/news" class="mb-8 inline-flex font-semibold text-[#0f5f4c]">
         Back to guides
-      </router-link>
+      </NuxtLink>
 
       <div class="mb-5 flex flex-wrap gap-2 text-xs font-semibold text-[#5d6f68]">
         <span class="rounded-full bg-[#e7f2ed] px-3 py-1 text-[#245c4c]">{{ article.category }}</span>
@@ -70,6 +74,6 @@ watch(() => route.params.slug, updateSeo)
 
   <main v-else class="container mx-auto px-4 py-20">
     <h1 class="mb-3 text-3xl font-bold text-[#17342d]">Guide not found</h1>
-    <router-link to="/news" class="font-semibold text-[#0f5f4c]">View all guides</router-link>
+    <NuxtLink to="/news" class="font-semibold text-[#0f5f4c]">View all guides</NuxtLink>
   </main>
 </template>

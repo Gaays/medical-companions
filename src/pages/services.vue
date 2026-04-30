@@ -1,11 +1,10 @@
-<script setup>
-import { onMounted, ref } from 'vue'
+<script setup lang="ts">
+import { ref } from 'vue'
 import { useI18n } from 'vue-i18n'
 import CompanionModal from '../components/CompanionModal.vue'
 import ContactModal from '../components/ContactModal.vue'
 import ConsultationForm from '../components/ConsultationForm.vue'
 import { useMockData } from '../../useMockData'
-import { setPageSeo } from '../utils/seo'
 
 const { companions } = useMockData()
 const { t } = useI18n()
@@ -14,12 +13,19 @@ const showContactModal = ref(false)
 
 const cityLabel = (region) => t(`regions.${region}`)
 
-onMounted(() => {
-  setPageSeo({
-    title: 'China health check consultation in Guangzhou, Shenzhen, and Shanghai',
-    description: 'Leave your information for China visa medical check, residence health check, full body checkup, English report, and hospital appointment support in Guangzhou, Shenzhen, or Shanghai.',
-    path: '/services'
-  })
+const siteUrl = useRuntimeConfig().public.siteUrl
+
+useSeoMeta({
+  title: 'China health check consultation in Guangzhou, Shenzhen, and Shanghai | China Health Check Guide',
+  description: 'Leave your information for China visa medical check, residence health check, full body checkup, English report, and hospital appointment support in Guangzhou, Shenzhen, or Shanghai.',
+  ogTitle: 'China health check consultation in Guangzhou, Shenzhen, and Shanghai | China Health Check Guide',
+  ogDescription: 'Leave your information for China visa medical check, residence health check, full body checkup, English report, and hospital appointment support in Guangzhou, Shenzhen, or Shanghai.',
+  ogType: 'website',
+  twitterCard: 'summary_large_image',
+})
+
+useHead({
+  link: [{ rel: 'canonical', href: `${siteUrl}/services` }],
 })
 </script>
 

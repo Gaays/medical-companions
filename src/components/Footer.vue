@@ -31,15 +31,15 @@ const switchLanguage = (lang) => {
           <h4 class="text-lg font-bold mb-4 text-white">{{ t('footer.contact') }}</h4>
           <ul class="space-y-2">
             <li class="flex items-center">
-              <i class="fas fa-envelope mr-2 text-gray-400"></i>
+              <font-awesome-icon icon="envelope" class="mr-2 text-gray-400" />
               <span class="text-gray-400">{{ t('contact.email_address') }}</span>
             </li>
             <li class="flex items-center">
-              <i class="fas fa-phone-alt mr-2 text-gray-400"></i>
+              <font-awesome-icon icon="phone" class="mr-2 text-gray-400" />
               <span class="text-gray-400">{{ t('footer.phone') }}</span>
             </li>
             <li class="flex items-center">
-              <i class="fas fa-map-marker-alt mr-2 text-gray-400"></i>
+              <font-awesome-icon icon="map-marker-alt" class="mr-2 text-gray-400" />
               <span class="text-gray-400">{{ t('footer.location') }}</span>
             </li>
           </ul>

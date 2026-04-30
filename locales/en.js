@@ -100,7 +100,7 @@ export default {
     title: 'Request planning help',
     description: 'Send your city, purpose of checkup, arrival date, and preferred contact channel. Please do not send sensitive diagnosis details in the first message.',
     email: 'Email',
-    email_address: 'doctor.me@@email.com',
+    email_address: 'doctor.me@email.com',
     whatsapp: 'WhatsApp',
     whatsapp_number: '+86 123 4567 8910',
     close: 'Close',
