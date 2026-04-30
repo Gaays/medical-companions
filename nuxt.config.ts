@@ -6,6 +6,14 @@ export default defineNuxtConfig({
     appManifest: false,
   },
   modules: ['@nuxtjs/tailwindcss'],
+  build: {
+    transpile: [
+      'vue-i18n',
+      '@fortawesome/fontawesome-svg-core',
+      '@fortawesome/free-solid-svg-icons',
+      '@fortawesome/vue-fontawesome',
+    ],
+  },
   vite: {
     vue: {
       template: {
@@ -24,6 +32,9 @@ export default defineNuxtConfig({
       siteUrl: process.env.NUXT_PUBLIC_SITE_URL || 'http://localhost:3000',
       siteName: 'China Health Check Guide',
     },
+  },
+  dir: {
+    public: 'public',
   },
   nitro: {
     preset: 'vercel',
