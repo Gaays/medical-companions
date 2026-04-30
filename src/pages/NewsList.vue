@@ -15,14 +15,23 @@ onMounted(() => {
 <template>
   <main class="bg-[#f8faf8]">
     <section class="border-b border-[#d9e4df] bg-white py-12 md:py-16">
-      <div class="container mx-auto px-4">
-        <p class="text-sm font-semibold uppercase tracking-[0.18em] text-[#3f7d68]">News and guides</p>
-        <h1 class="mt-3 max-w-3xl text-3xl font-bold leading-tight text-[#17342d] md:text-5xl">
-          China health check guidance for foreigners
-        </h1>
-        <p class="mt-4 max-w-2xl text-base leading-7 text-[#5f6d68] md:text-lg">
-          Search-friendly articles maintained from one static data source. Add new guides to the news database and the build creates crawlable pages automatically.
-        </p>
+      <div class="container mx-auto grid items-center gap-8 px-4 lg:grid-cols-[0.95fr_1.05fr]">
+        <div>
+          <p class="text-sm font-semibold uppercase tracking-[0.18em] text-[#3f7d68]">News and guides</p>
+          <h1 class="mt-3 max-w-3xl text-3xl font-bold leading-tight text-[#17342d] md:text-5xl">
+            China health check guidance for foreigners
+          </h1>
+          <p class="mt-4 max-w-2xl text-base leading-7 text-[#5f6d68] md:text-lg">
+            Search-friendly articles about visa medical checks, full body checkups, English reports, and consultation support in Guangzhou, Shenzhen, and Shanghai.
+          </p>
+        </div>
+        <img
+          src="/images/banner-news.svg"
+          alt="China health check news and guides illustration"
+          class="aspect-[2.3/1] w-full rounded-lg object-cover shadow-lg"
+          width="1200"
+          height="520"
+        />
       </div>
     </section>
 

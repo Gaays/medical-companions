@@ -26,14 +26,23 @@ onMounted(() => {
 <template>
   <main class="bg-[#f8faf8]">
     <section class="border-b border-[#d9e4df] bg-white py-10 md:py-14">
-      <div class="container mx-auto px-4">
-        <p class="text-sm font-semibold uppercase tracking-[0.18em] text-[#3f7d68]">Guangzhou / Shenzhen / Shanghai</p>
-        <h1 class="mt-3 max-w-4xl text-3xl font-bold leading-tight text-[#17342d] md:text-5xl">
-          China health check consultation for foreigners
-        </h1>
-        <p class="mt-4 max-w-3xl leading-8 text-[#5f6d68]">
-          We help foreign teachers, work visa applicants, international students, expat employees, and self-pay visitors understand the right health check path before booking.
-        </p>
+      <div class="container mx-auto grid items-center gap-8 px-4 lg:grid-cols-[0.95fr_1.05fr]">
+        <div>
+          <p class="text-sm font-semibold uppercase tracking-[0.18em] text-[#3f7d68]">Guangzhou / Shenzhen / Shanghai</p>
+          <h1 class="mt-3 max-w-4xl text-3xl font-bold leading-tight text-[#17342d] md:text-5xl">
+            China health check consultation for foreigners
+          </h1>
+          <p class="mt-4 max-w-3xl leading-8 text-[#5f6d68]">
+            We help foreign teachers, work visa applicants, international students, expat employees, and self-pay visitors understand the right health check path before booking.
+          </p>
+        </div>
+        <img
+          src="/images/banner-services.svg"
+          alt="Consultation services for China health checks"
+          class="aspect-[2.3/1] w-full rounded-lg object-cover shadow-lg"
+          width="1200"
+          height="520"
+        />
       </div>
     </section>
 

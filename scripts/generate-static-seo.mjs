@@ -29,6 +29,7 @@ function pageHtml({ title, description, path, body }) {
   ].join('\n    ')
 
   return template
+    .replace(/<meta name="description" content=".*?">\n?/, '')
     .replace(/<title>.*?<\/title>/, meta)
     .replace('<div id="app"></div>', `<div id="app">${body}</div>`)
 }
@@ -89,6 +90,10 @@ function homeBody() {
         <li>Medical report translation and organization</li>
         <li>Follow-up routing after abnormal report flags</li>
       </ul>
+      <h2>User stories</h2>
+      <p>Michael, a foreign teacher in Guangzhou, used the checklist to avoid booking the wrong overseas exam before asking his school the right questions.</p>
+      <p>Aisha, an international student arriving in Shanghai, used the consultation flow to understand the difference between an overseas report and an official residence health check.</p>
+      <p>David, a self-pay visitor in Shenzhen, compared private full body checkup options and prepared follow-up questions before booking.</p>
       <p><a href="/services/" style="color: #0f5f4c;">Request consultation</a></p>
     </main>
   `

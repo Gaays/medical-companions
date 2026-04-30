@@ -41,6 +41,14 @@ watch(() => route.params.slug, updateSeo)
       </h1>
       <p class="mb-10 text-lg leading-8 text-[#5f6d68]">{{ article.description }}</p>
 
+      <img
+        src="/images/banner-news.svg"
+        :alt="`${article.title} illustration`"
+        class="mb-10 aspect-[2.3/1] w-full rounded-lg border border-[#d9e4df] object-cover shadow-sm"
+        width="1200"
+        height="520"
+      />
+
       <section
         v-for="section in article.sections"
         :key="section.heading"

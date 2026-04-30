@@ -7,6 +7,7 @@ import CompanionModal from '../components/CompanionModal.vue'
 import ContactModal from '../components/ContactModal.vue'
 import NewsPreview from '../components/NewsPreview.vue'
 import ConsultationForm from '../components/ConsultationForm.vue'
+import UserStories from '../components/UserStories.vue'
 import { setPageSeo } from '../utils/seo'
 
 const selectedCompanion = ref(null)
@@ -26,6 +27,7 @@ onMounted(() => {
     <HeroSection />
     <FeaturedCompanions @open-modal="selectedCompanion = $event" />
     <HowItWorks />
+    <UserStories />
     <ConsultationForm />
     <NewsPreview />
 

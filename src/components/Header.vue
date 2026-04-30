@@ -24,7 +24,7 @@ const navItems = [
   <header class="sticky top-0 z-40 border-b border-[#d9e4df] bg-white/95 backdrop-blur">
     <div class="container mx-auto flex items-center justify-between px-4 py-3">
       <router-link to="/" class="flex items-center gap-3 text-[#17342d] no-underline">
-        <img src="../assets/svg/logo.svg" alt="China Health Check Guide" class="h-8 w-8" />
+        <img src="../assets/svg/logo.svg" alt="China Health Check Guide" class="h-9 w-9" />
         <div>
           <div class="text-base font-bold leading-tight md:text-lg">{{ t('app.name') }}</div>
           <div class="hidden text-xs text-[#5f6d68] sm:block">{{ t('app.slogan') }}</div>

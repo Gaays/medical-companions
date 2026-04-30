@@ -32,6 +32,13 @@ const { t } = useI18n()
       </div>
 
       <div class="relative">
+        <img
+          src="/images/banner-home.svg"
+          alt="China health check planning illustration"
+          class="mb-4 aspect-[1.46/1] w-full rounded-lg border border-[#d8e3de] bg-white object-cover shadow-xl"
+          width="1200"
+          height="820"
+        />
         <div class="rounded-lg border border-[#d8e3de] bg-white p-4 shadow-xl md:p-5">
           <div class="mb-4 rounded-md bg-[#eef7f2] p-4">
             <div class="text-sm font-semibold text-[#3f7d68]">Decision check</div>
