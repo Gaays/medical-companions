@@ -1,5 +1,6 @@
 <script setup>
 import { useI18n } from 'vue-i18n'
+import bannerHome from '../assets/images/banner-home.png'
 
 const { t } = useI18n()
 </script>
@@ -33,7 +34,7 @@ const { t } = useI18n()
 
       <div class="relative">
         <img
-          src="/images/banner-home.svg"
+          :src="bannerHome"
           alt="China health check planning illustration"
           class="mb-4 aspect-[1.46/1] w-full rounded-lg border border-[#d8e3de] bg-white object-cover shadow-xl"
           width="1200"

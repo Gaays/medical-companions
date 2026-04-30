@@ -1,20 +1,27 @@
 <script setup>
+import aishaAvatar from '../assets/images/Aisha K..png'
+import davidAvatar from '../assets/images/David M..png'
+import michaelAvatar from '../assets/images/Michael R..png'
+
 const stories = [
   {
     name: 'Michael R.',
     role: 'Foreign teacher, Guangzhou',
+    avatar: michaelAvatar,
     quote: 'I was about to pay for a medical exam back home, but the checklist helped me ask my school the right questions first. I avoided booking the wrong type of checkup and knew what documents to bring in Guangzhou.',
     outcome: 'Work visa health check planning'
   },
   {
     name: 'Aisha K.',
     role: 'International student, Shanghai',
+    avatar: aishaAvatar,
     quote: 'The confusing part was whether my overseas report would be accepted. The consultation made the difference between a private checkup and the official residence requirement clear, and I had a simple timeline before arriving.',
     outcome: 'Student residence health check'
   },
   {
     name: 'David M.',
     role: 'Self-pay visitor, Shenzhen',
+    avatar: davidAvatar,
     quote: 'I wanted a full body checkup but did not want to overbuy a huge package. They helped me compare what to ask for, confirm English report options, and prepare follow-up questions for the doctor.',
     outcome: 'Private full body checkup'
   }
@@ -39,9 +46,14 @@ const stories = [
           class="rounded-lg border border-[#d8e3de] bg-[#fbfcfb] p-5 shadow-sm"
         >
           <div class="mb-5 flex items-center gap-3">
-            <div class="flex h-12 w-12 items-center justify-center rounded-lg bg-[#0f5f4c] text-lg font-bold text-white">
-              {{ story.name.slice(0, 1) }}
-            </div>
+            <img
+              :src="story.avatar"
+              :alt="`${story.name} testimonial portrait`"
+              class="h-14 w-14 shrink-0 rounded-full border-2 border-white object-cover shadow-sm ring-1 ring-[#d8e3de]"
+              width="112"
+              height="112"
+              loading="lazy"
+            />
             <div>
               <h3 class="mb-0 text-base font-bold text-[#17342d]">{{ story.name }}</h3>
               <p class="mb-0 text-sm text-[#5f6d68]">{{ story.role }}</p>

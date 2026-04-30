@@ -33,7 +33,7 @@ const handleViewDetails = () => {
       </div>
       <div class="shrink-0 rounded-lg bg-[#f2eee5] px-3 py-2 text-right">
         <span class="block text-xs font-semibold text-[#72592f]">From</span>
-        <span class="block text-lg font-bold text-[#17342d]">¥{{ companion.price }}</span>
+        <span class="block text-lg font-bold text-[#17342d]">RMB ¥{{ companion.price }}</span>
         <span class="block text-xs text-[#66736f]">~${{ usdPrice }}</span>
       </div>
     </div>

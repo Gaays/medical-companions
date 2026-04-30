@@ -1,5 +1,4 @@
 import { createClient } from '@supabase/supabase-js'
-import { newsArticles } from '~/data/news'
 
 export type NewsSection = {
   heading: string
@@ -71,10 +70,7 @@ export function toDbArticle(article: Partial<NewsArticle>) {
 }
 
 export function fallbackNews(): NewsArticle[] {
-  return newsArticles.map((article) => ({
-    ...article,
-    published: true,
-  }))
+  return []
 }
 
 export function validateArticlePayload(body: Partial<NewsArticle>) {
@@ -97,7 +93,7 @@ export function validateArticlePayload(body: Partial<NewsArticle>) {
 }
 
 export function requireAdmin(event: any) {
-  const password = useRuntimeConfig().adminPassword
+  const password = String(useRuntimeConfig().adminPassword)
   const token = getCookie(event, 'doctor_admin')
 
   if (!password || token !== password) {

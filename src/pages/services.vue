@@ -4,6 +4,7 @@ import { useI18n } from 'vue-i18n'
 import CompanionModal from '../components/CompanionModal.vue'
 import ContactModal from '../components/ContactModal.vue'
 import ConsultationForm from '../components/ConsultationForm.vue'
+import bannerServices from '../assets/images/banner-services.png'
 import { useMockData } from '../../useMockData'
 
 const { companions } = useMockData()
@@ -43,7 +44,7 @@ useHead({
           </p>
         </div>
         <img
-          src="/images/banner-services.svg"
+          :src="bannerServices"
           alt="Consultation services for China health checks"
           class="aspect-[2.3/1] w-full rounded-lg object-cover shadow-lg"
           width="1200"

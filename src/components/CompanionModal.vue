@@ -40,7 +40,7 @@ const usdPrice = computed(() => Math.round(props.companion.price / 7))
 
       <div class="mb-6 rounded-lg border border-[#d8e3de] bg-[#fbfcfb] p-4">
         <div class="text-sm font-semibold text-[#66736f]">{{ t('details.price') }}</div>
-        <div class="mt-1 text-2xl font-bold text-[#17342d]">¥{{ companion.price }} <span class="text-base font-medium text-[#66736f]">(~${{ usdPrice }})</span></div>
+        <div class="mt-1 text-2xl font-bold text-[#17342d]">RMB ¥{{ companion.price }} <span class="text-base font-medium text-[#66736f]">(~${{ usdPrice }})</span></div>
       </div>
 
       <section class="mb-6">

@@ -1,6 +1,6 @@
 export default defineEventHandler(async (event) => {
   const body = await readBody<{ password?: string }>(event)
-  const password = useRuntimeConfig().adminPassword
+  const password = String(useRuntimeConfig().adminPassword)
 
   if (!password || body.password !== password) {
     throw createError({ statusCode: 401, statusMessage: 'Invalid password' })

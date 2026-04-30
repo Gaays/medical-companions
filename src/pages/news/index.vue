@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import bannerNews from '../../assets/images/news-banner.png'
+
 const { data: newsArticles } = await useFetch('/api/news', {
   default: () => [],
 })
@@ -21,7 +23,7 @@ useHead({
 
 <template>
   <main class="bg-[#f8faf8]">
-    <section class="border-b border-[#d9e4df] bg-white py-12 md:py-16">
+    <section class="border-b border-[#d9e4df] bg-white py-10 md:py-14">
       <div class="container mx-auto grid items-center gap-8 px-4 lg:grid-cols-[0.95fr_1.05fr]">
         <div>
           <p class="text-sm font-semibold uppercase tracking-[0.18em] text-[#3f7d68]">News and guides</p>
@@ -33,8 +35,8 @@ useHead({
           </p>
         </div>
         <img
-          src="/images/banner-news.svg"
-          alt="China health check news and guides illustration"
+          :src="bannerNews"
+          alt="China health check guides and planning resources for foreigners"
           class="aspect-[2.3/1] w-full rounded-lg object-cover shadow-lg"
           width="1200"
           height="520"

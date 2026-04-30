@@ -12,6 +12,7 @@ export default defineNuxtConfig({
       '@fortawesome/fontawesome-svg-core',
       '@fortawesome/free-solid-svg-icons',
       '@fortawesome/vue-fontawesome',
+      'md-editor-v3',
     ],
   },
   vite: {
@@ -25,9 +26,9 @@ export default defineNuxtConfig({
   },
   css: ['~/styles/index.scss', 'element-plus/dist/index.css'],
   runtimeConfig: {
-    supabaseUrl: process.env.SUPABASE_URL || '',
-    supabaseServiceRoleKey: process.env.SUPABASE_SERVICE_ROLE_KEY || '',
-    adminPassword: process.env.ADMIN_PASSWORD || '',
+    supabaseUrl: '',
+    supabaseServiceRoleKey: '',
+    adminPassword: '',
     public: {
       siteUrl: process.env.NUXT_PUBLIC_SITE_URL || 'http://localhost:3000',
       siteName: 'China Health Check Guide',

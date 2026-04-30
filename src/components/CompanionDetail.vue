@@ -104,7 +104,7 @@ const handleContact = () => {
               {{ t('search.gender') }}: {{ t(`search.${companion.gender}`) }}
             </span>
             <span class="price">
-              {{ t('companion.price_per_hour') }}: ¥{{ companion.price }}
+              {{ t('companion.price_per_hour') }}: RMB ¥{{ companion.price }}
             </span>
           </div>
         </div>
